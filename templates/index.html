@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>AI Resume Analyzer 🤖</h1>
+        <p>Get instant feedback on your resume. Upload a PDF to check its ATS score or compare it against a job description.</p>
+    </header>
+
+    <main>
+        <form id="resume-form">
+            <!-- File Input Section -->
+            <div class="file-upload-wrapper">
+                <label for="resume" class="file-upload-button">Choose Resume PDF</label>
+                <input type="file" id="resume" name="resume" accept=".pdf" required>
+                <!-- This new span will display the selected file's name -->
+                <span id="file-name-display" class="file-name">No file chosen</span>
+            </div>
+
+            <!-- Job Description Section -->
+            <div class="form-group">
+                <label for="job_description">Job Description (Optional)</label>
+                <textarea id="job_description" name="job_description" rows="8" placeholder="Paste the job description here to get a detailed match analysis..."></textarea>
+            </div>
+            
+            <button type="submit" class="cta-button">Analyze My Resume</button>
+        </form>
+    </main>
+
+    <div id="loader" style="display:none;">
+        <div class="spinner"></div>
+        <p>Analyzing... this may take a moment.</p>
+    </div>
+
+    <div id="results" style="display:none;">
+        <!-- Analysis results will be injected here by JavaScript -->
+    </div>
+    
+    <button id="analyze-another" style="display:none;" class="cta-button secondary">Analyze Another</button>
+
+    <footer>
+        <!-- <p>Powered by Gemini AI</p> -->
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+
